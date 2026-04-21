@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
-import UserProfileActions from "../../components/UserProfileActions";
+import UserProfileActions from "./../../components/UserProfileActions";
 
 export default async function UserProfilePage({
   params,
@@ -60,20 +60,22 @@ export default async function UserProfilePage({
       </div>
 
       <div className="card spacer-xl">
-        <div style={{ display: "flex", gap: 16 }}>
-<div className="avatar-lg">
-  {profile.avatar_url ? (
-    <img
-      src={profile.avatar_url}
-      alt={`${profile.username} avatar`}
-      className="avatar-lg-image"
-    />
-  ) : (
-    <span>{(profile.full_name || profile.username).charAt(0).toUpperCase()}</span>
-  )}
-</div>
+        <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+          <div className="avatar-lg">
+            {profile.avatar_url ? (
+              <img
+                src={profile.avatar_url}
+                alt={`${profile.username} avatar`}
+                className="avatar-lg-image"
+              />
+            ) : (
+              <span>
+                {(profile.full_name || profile.username).charAt(0).toUpperCase()}
+              </span>
+            )}
+          </div>
 
-          <div>
+          <div style={{ flex: 1 }}>
             <h1 style={{ margin: 0 }}>
               {profile.full_name || profile.username}
             </h1>

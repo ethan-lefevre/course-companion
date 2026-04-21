@@ -64,12 +64,6 @@ function LoginContent() {
           <p className="auth-text">
             Jump back into your classes, friends, and student network at GRCC.
           </p>
-
-          <div className="auth-feature-list">
-            <div className="auth-feature-item">See who’s in your classes</div>
-            <div className="auth-feature-item">Check your friends’ schedules</div>
-            <div className="auth-feature-item">Explore student profiles</div>
-          </div>
         </div>
 
         <div className="auth-card">

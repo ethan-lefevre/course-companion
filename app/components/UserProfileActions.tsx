@@ -2,6 +2,8 @@
 
 import Link from "next/link";
 import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { createClient } from "@/lib/supabase/client";
 
 type Props = {
   profileUserId: string;
@@ -18,6 +20,9 @@ export default function UserProfileActions({
 }: Props) {
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
+  const supabase = createClient();
 
   async function sendFriendRequest() {
     try {
@@ -48,6 +53,12 @@ export default function UserProfileActions({
     }
   }
 
+  async function handleLogout() {
+    await supabase.auth.signOut();
+    router.push("/");
+    router.refresh();
+  }
+
   if (!viewerUserId) {
     return (
       <Link href="/login" className="link-button">
@@ -58,9 +69,15 @@ export default function UserProfileActions({
 
   if (isOwnProfile) {
     return (
-      <Link href="/profile/edit" className="link-button">
-        Edit your profile
-      </Link>
+      <div className="row" style={{ flexWrap: "wrap" }}>
+        <Link href="/profile/edit" className="link-button">
+          Edit Profile
+        </Link>
+
+        <button onClick={handleLogout} className="button" type="button">
+          Log out
+        </button>
+      </div>
     );
   }
 

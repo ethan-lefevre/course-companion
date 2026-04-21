@@ -3,7 +3,6 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import AddClassForm from "./../components/AddClassForm";
 import ClassList from "./../components/ClassList";
-import LogoutButton from "./../components/LogoutButton";
 import FriendsClasses from "./../components/FriendsClasses";
 import DashboardSearchBar from "./../components/DashboardSearchBar";
 
@@ -105,10 +104,6 @@ export default async function DashboardPage() {
             <Link href="/friends" className="link-button">
               Friends
             </Link>
-            <Link href="/profile/edit" className="link-button">
-              Edit Profile
-            </Link>
-            <LogoutButton />
           </div>
         </div>
 
@@ -152,9 +147,6 @@ export default async function DashboardPage() {
                 </Link>
                 <Link href={`/u/${existingProfile.username}`} className="link-button">
                   Open Public Profile
-                </Link>
-                <Link href="/profile/edit" className="link-button">
-                  Update Profile
                 </Link>
               </div>
             </div>
